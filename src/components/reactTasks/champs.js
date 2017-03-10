@@ -9,7 +9,7 @@ this.state = { viewable: false, height: 150 };
 }
 
 handleClick() {
-  if  (this.state.height == 250) {
+  if  (this.state.height === 250) {
 	this.setState({ height: 150});
 } else {
 this.setState({ height: this.state.height + 100 });
