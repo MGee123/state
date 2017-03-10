@@ -4,14 +4,22 @@ import React from 'react'
 export default class Champ extends React.Component {
 constructor() {
 super()
-this.state = { viewable: false };
-  this.handleMouseEnter = e => this.setState({ viewable: true });
-  this.handleMouseLeave = e => this.setState({ viewable: false });
+this.state = { viewable: false, height: 150 };
+ 
+}
+
+handleClick() {
+  if  (this.state.height == 250) {
+	this.setState({ height: 150});
+} else {
+this.setState({ height: this.state.height + 100 });
+}
 }
 render() {
-return (
-<div onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
-<img src={this.props.champ.file} />
+  return (
+	<div style={{ height: this.state.height}} onMouseEnter={e => this.setState({ viewable: true })} onMouseLeave={e => this.setState({ viewable: false })}  >
+
+<img src={this.props.champ.file} onClick={() => this.handleClick()} />
 { this.state.viewable && <ChampDetails champ={this.props.champ} /> }
 </div>
 )
